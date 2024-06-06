@@ -38,7 +38,7 @@ class NodeList {
         console.log(pointer);
       }
 
-      return current;
+      return current.value;
     }
   }
 
@@ -49,6 +49,20 @@ class NodeList {
     this.head = node;
 
     this._size++;
+  }
+
+  pop() {
+    let current = this.head;
+    let last;
+    while (current.next.next !== null) {
+      current = current.next;
+    }
+
+    last = current.next;
+    current.next = null;
+
+    this._size--;
+    return last;
   }
 
   get header() {
@@ -70,6 +84,7 @@ nodeList.append(55);
 nodeList.append(65);
 nodeList.prepend(35);
 
-console.log(nodeList);
+console.log(nodeList.pop());
+console.log(nodeList.pop());
 
-console.log(nodeList.atIndex(4));
+console.log(nodeList);
