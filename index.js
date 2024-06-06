@@ -28,6 +28,20 @@ class NodeList {
     this._size++;
   }
 
+  atIndex(index) {
+    if (index >= this._size)
+      throw new Error("atIndex is greater than the size of the Node list");
+    else {
+      let current = this.head;
+      for (let pointer = 0; pointer < index; pointer++) {
+        current = current.next;
+        console.log(pointer);
+      }
+
+      return current;
+    }
+  }
+
   prepend(value) {
     let node = new Node(value);
 
@@ -57,5 +71,5 @@ nodeList.append(65);
 nodeList.prepend(35);
 
 console.log(nodeList);
-console.log(nodeList.head);
-console.log(nodeList.tail);
+
+console.log(nodeList.atIndex(4));
