@@ -65,6 +65,18 @@ class NodeList {
     return last;
   }
 
+  contains(value) {
+    let current = this.head;
+    while (current.next !== null) {
+      if (current.value === value) {
+        return true;
+      }
+      current = current.next;
+    }
+
+    return false;
+  }
+
   get header() {
     return this.head;
   }
@@ -83,8 +95,4 @@ nodeList.append(45);
 nodeList.append(55);
 nodeList.append(65);
 nodeList.prepend(35);
-
-console.log(nodeList.pop());
-console.log(nodeList.pop());
-
 console.log(nodeList);
