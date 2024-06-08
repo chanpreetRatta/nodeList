@@ -38,7 +38,7 @@ class NodeList {
         console.log(pointer);
       }
 
-      return current.value;
+      return current;
     }
   }
 
@@ -67,7 +67,8 @@ class NodeList {
 
   contains(value) {
     let current = this.head;
-    while (current.next !== null) {
+
+    while (current !== null) {
       if (current.value === value) {
         return true;
       }
@@ -75,6 +76,32 @@ class NodeList {
     }
 
     return false;
+  }
+
+  find(value) {
+    let current = this.head;
+    let currentValue = 0;
+    while (current !== null) {
+      if (current.value === value) {
+        return currentValue;
+      }
+      currentValue++;
+      current = current.next;
+    }
+
+    return false;
+  }
+
+  get toString() {
+    let current = this.head;
+    let nodeToString = "";
+
+    while (current !== null) {
+      nodeToString += `(${current.value}) -> `;
+      current = current.next;
+    }
+
+    return (nodeToString += "(null)");
   }
 
   get header() {
@@ -95,4 +122,6 @@ nodeList.append(45);
 nodeList.append(55);
 nodeList.append(65);
 nodeList.prepend(35);
-console.log(nodeList);
+nodeList.append(24234);
+nodeList.prepend(2134243234234);
+console.log(nodeList.toString);
